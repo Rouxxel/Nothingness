@@ -14,6 +14,7 @@ public class obstaclespawner : MonoBehaviour
     //Script references
     public obstaclescript obstaclelogic;
     public bufferscript bufferlogic;
+    public playerscript playerlogic;
 
     // Start is called before the first frame update
     void Start()
@@ -22,14 +23,15 @@ public class obstaclespawner : MonoBehaviour
 
         obstaclelogic=GameObject.FindGameObjectWithTag("obstacle").GetComponent<obstaclescript>();
         bufferlogic=GameObject.FindGameObjectWithTag("buffer").GetComponent <bufferscript>();
+        playerlogic=GameObject.FindGameObjectWithTag("player").GetComponent<playerscript>();    
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
 
-        //Check timer to spawn or not a clone
-        if (timer1 < spawnrate1)
+        //Check timer and player control to spawn or not a clone
+        if (timer1 < spawnrate1 && playerlogic.playercontrol==true)
         {
             timer1 = timer1 + Time.deltaTime;
         }
