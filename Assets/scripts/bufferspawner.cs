@@ -6,6 +6,7 @@ public class bufferspawner : MonoBehaviour
     public GameObject buffer;
     public float spawnrate1 = 4;
     private float timer1 = 0;
+    public playerscript playerlogic;
 
     //Establish highest and lowest range
     public float highpoint = 4;
@@ -14,7 +15,7 @@ public class bufferspawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        playerlogic = GameObject.FindGameObjectWithTag("player").GetComponent<playerscript>();
     }
 
     // Update is called once per frame
@@ -22,7 +23,7 @@ public class bufferspawner : MonoBehaviour
     {
 
         //Check timer to spawn or not a clone
-        if (timer1 < spawnrate1)
+        if (timer1 < spawnrate1 && playerlogic.playercontrol == true)
         {
             timer1 = timer1 + Time.deltaTime;
         }
