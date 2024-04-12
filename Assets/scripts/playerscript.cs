@@ -4,7 +4,6 @@ public class playerscript : MonoBehaviour
 {
     //Body management and movement strength values
     public Rigidbody2D playerbody;
-    public BoxCollider2D playercollision;
     public float upwardstrength = 30;
     public float sidewaysstrength = 10;
     public float downwardstrength = 5;
@@ -24,7 +23,6 @@ public class playerscript : MonoBehaviour
     void Start()
     {
         playerbody = GetComponent<Rigidbody2D>();
-        playercollision = GetComponent<BoxCollider2D>();
     }
 
     // Update is called once per frame
@@ -104,7 +102,6 @@ public class playerscript : MonoBehaviour
             //Disable player control and the object's collision
             Debug.Log("Player control and and collider2D disabled");
             playercontrol = false;
-            playercollision.enabled = false;
 
         }
         
