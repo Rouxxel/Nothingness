@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class bufferscript : MonoBehaviour
@@ -7,6 +8,10 @@ public class bufferscript : MonoBehaviour
     public float despawnzone = -18;
     public float synthesize = 7f;
 
+    //Reference to player script
+    public playerscript playerlogic;
+    
+
 // <Variables and references>
 /// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // <Start and Fixed Update>
@@ -14,7 +19,7 @@ public class bufferscript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-   
+        playerlogic = GameObject.FindGameObjectWithTag("player").GetComponent<playerscript>();  
     }
 
     // Update is called once per frame
@@ -53,12 +58,14 @@ public class bufferscript : MonoBehaviour
 // <Collisions events>
 
     //Trigger event when collision with player
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        //Despawn buffer upon collision with player
         if (collision.gameObject.CompareTag("player") == true)
         {
-            Debug.Log("Player collided with Buffer, enable effects");
+            Debug.Log("Player collided with Buffer, despawn buffer");
+
+            Destroy(gameObject);
         }
        
      
