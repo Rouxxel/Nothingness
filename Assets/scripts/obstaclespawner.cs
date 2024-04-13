@@ -11,12 +11,15 @@ public class obstaclespawner : MonoBehaviour
     public float highpoint = 3;
     public float lowpoint = -3;
 
-    //Script references
+    //Reference player for spawn control
+    public playerscript playerlogic;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        playerlogic = GameObject.FindGameObjectWithTag("player").GetComponent<playerscript>();
+
         spawnobstacle();
 
     }
@@ -32,8 +35,12 @@ public class obstaclespawner : MonoBehaviour
         }
         else
         {
-            spawnobstacle();
-            timer1 = 0;
+            if (playerlogic.playercontrol == true)
+            {
+                spawnobstacle();
+                timer1 = 0;
+            }
+            
         }
     }
 
