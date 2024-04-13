@@ -4,6 +4,7 @@ public class playerscript : MonoBehaviour
 {
     //Body management and movement strength values
     public Rigidbody2D playerbody;
+    public BoxCollider2D playercollider;
     public float upwardstrength = 30;
     public float sidewaysstrength = 10;
     public float downwardstrength = 5;
@@ -18,6 +19,15 @@ public class playerscript : MonoBehaviour
     public KeyCode leftsideways = KeyCode.A;
     public KeyCode rightsideways = KeyCode.D;
 
+    //References for other scripts and variables
+    public bufferscript bufferlogic;
+    public obstaclescript obstaclelogic;
+    public bool buffeffect=false;
+    public float buffmaxdelay = 10;
+    public float bufftimer = 0;
+
+    public int bufftype = 0;
+
 // <Variables and references>
 /// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // <Start and Fixed Update>
@@ -25,7 +35,13 @@ public class playerscript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Reference the Rigid body for movement
         playerbody = GetComponent<Rigidbody2D>();
+
+        //Obtain other scripts
+        obstaclelogic = GameObject.FindGameObjectWithTag("obstacle").GetComponent<obstaclescript>();   
+        bufferlogic = GameObject.FindGameObjectWithTag("buffer").GetComponent<bufferscript>();
+
     }
 
     // Update is called once per frame
@@ -38,7 +54,23 @@ public class playerscript : MonoBehaviour
             Debug.Log("Player despawned");
             Destroy(gameObject);
         }
-        
+  
+        //Check if buff effect is true or not 
+        if (buffeffect == true)
+        {
+
+            if (bufftimer <= buffmaxdelay)
+            {
+                bufftimer = bufftimer + Time.deltaTime;
+            } 
+            else
+            {
+                Debug.Log("Buffer effect has ended");
+                buffeffect = false;
+                bufftimer = 0;
+            }
+        }
+
     }
 
 // <Start and Fixed Update>
@@ -113,10 +145,19 @@ public class playerscript : MonoBehaviour
             //Disable player control and the object's collision
             Debug.Log("Player control and and collider2D disabled");
             playercontrol = false;
-
-        }
-        
+        }   
     }
 
+    //Apply buffer effects on obstacles
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
 
+        //Check if player collided with buffer
+        if (collision.gameObject.tag == "buffer")
+        {
+            buffeffect = true; 
+        }
+         
+        
+    }
 }
