@@ -43,8 +43,8 @@ public class obstaclespawner : MonoBehaviour
                 spawnobstacle();
                 timer1 = 0;
             }
-            
         }
+
     }
 
 // <Start and Fixed Update>
