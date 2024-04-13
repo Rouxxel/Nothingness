@@ -17,7 +17,10 @@ public class playerscript : MonoBehaviour
     public KeyCode downward = KeyCode.S;
     public KeyCode leftsideways = KeyCode.A;
     public KeyCode rightsideways = KeyCode.D;
-    
+
+// <Variables and references>
+/// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// <Start and Fixed Update>
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +40,10 @@ public class playerscript : MonoBehaviour
         }
         
     }
+
+// <Start and Fixed Update>
+/// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// <Functions>
 
     //Manage player movements
     void playermovement()
@@ -93,6 +100,10 @@ public class playerscript : MonoBehaviour
         playerbody.velocity = movementdirection;
 
     }
+
+// <Functions>
+/// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// <Collisions events>
 
     //Disable player control if collision with obstacle
     private void OnCollisionEnter2D(Collision2D collision)
