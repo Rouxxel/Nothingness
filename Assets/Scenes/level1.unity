@@ -171,7 +171,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerbody: {fileID: 24745041}
-  playercollision: {fileID: 24745040}
   upwardstrength: 30
   sidewaysstrength: 10
   downwardstrength: 5
@@ -628,7 +627,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &821287807
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -672,7 +671,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &948199523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -686,9 +685,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buffer: {fileID: 3773200246306977817, guid: 652fd0493b7b37143aa5660a08cbe3e5, type: 3}
-  spawnrate1: 15
+  spawnrate1: 1
   highpoint: 6
   lowpoint: -6
+  playerlogic: {fileID: 0}
 --- !u!4 &948199524
 Transform:
   m_ObjectHideFlags: 0
@@ -734,11 +734,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstacles: {fileID: 1263908029690978850, guid: e944181d23b7b854787ce9c62b41a712, type: 3}
-  spawnrate1: 1
+  spawnrate1: 30
   highpoint: 6
   lowpoint: -6
-  obstaclelogic: {fileID: 0}
-  bufferlogic: {fileID: 0}
+  playerlogic: {fileID: 0}
 --- !u!4 &1303842164
 Transform:
   m_ObjectHideFlags: 0
