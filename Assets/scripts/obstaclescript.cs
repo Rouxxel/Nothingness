@@ -28,7 +28,6 @@ public class obstaclescript : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-
         obstamovement();
 
     }
@@ -37,7 +36,6 @@ public class obstaclescript : MonoBehaviour
     void obstamovement()
     {
         if (playerlogic.playercontrol == true) {
-            Debug.Log("Player control is true, allow movement");
 
             //Check if obstacle is out of range
             if (transform.position.x > despawnzone)
@@ -51,9 +49,6 @@ public class obstaclescript : MonoBehaviour
                 Debug.Log("Obstacle despawned");
                 Destroy(gameObject);
             }
-        } else
-        {
-            Debug.Log("Player control lost, disable movement");
         }
         
     }
