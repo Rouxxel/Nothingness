@@ -11,12 +11,18 @@ public class obstaclescript : MonoBehaviour
     public new BoxCollider2D collider;
     public bool collideron=true;
 
+    //Reference player for movement control
+    public playerscript playerlogic;
+
 
     // Start is called before the first frame update
     void Start()
     {
         //Obtain component on 1st frame
-        collider = GetComponent<BoxCollider2D>(); 
+        collider = GetComponent<BoxCollider2D>();
+
+        //Obtain player script in first frame
+        playerlogic = GameObject.FindGameObjectWithTag("player").GetComponent<playerscript>();  
     }
 
     // Update is called once per frame
@@ -30,16 +36,26 @@ public class obstaclescript : MonoBehaviour
     //Manage obstacle movement
     void obstamovement()
     {
-        //Check if obstacle is out of range
-        if (transform.position.x > despawnzone) {
+        if (playerlogic.playercontrol == true) {
+            Debug.Log("Player control is true, allow movement");
 
-            //Move obstacle in straight line
-            transform.position = transform.position + (Vector3.left * obstaspeed) * Time.deltaTime;
+            //Check if obstacle is out of range
+            if (transform.position.x > despawnzone)
+            {
+
+                //Move obstacle in straight line
+                transform.position = transform.position + (Vector3.left * obstaspeed) * Time.deltaTime;
+            }
+            else
+            {
+                Debug.Log("Obstacle despawned");
+                Destroy(gameObject);
+            }
         } else
         {
-            Debug.Log("Obstacle despawned");
-            Destroy(gameObject);    
+            Debug.Log("Player control lost, disable movement");
         }
+        
     }
 
     //Toggle collider on
