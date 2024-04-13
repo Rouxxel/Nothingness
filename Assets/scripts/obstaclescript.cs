@@ -8,11 +8,13 @@ public class obstaclescript : MonoBehaviour
 
     //Box collider management values
     public new BoxCollider2D collider;
-    public bool collideron=true;
 
     //Reference player for movement control
     public playerscript playerlogic;
 
+// <Variables and references>
+/// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// <Start and Fixed Update>
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +32,10 @@ public class obstaclescript : MonoBehaviour
         obstamovement();
 
     }
+
+// <Start and Fixed Update>
+/// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// <Functions>
 
     //Manage obstacle movement
     void obstamovement()
@@ -52,27 +58,5 @@ public class obstaclescript : MonoBehaviour
         
     }
 
-    //Toggle collider on
-    [ContextMenu("Toggle obstacle collider on")]
-    public void colldierOn()
-    {
-        if (collider != null)
-        {
-            Debug.Log("Obstacle collider enabled");
-            collider.enabled = true;
-        }
-           
-    }
-
-    //Toggle collider off
-    [ContextMenu("Toggle obstacle collider off")]
-    public void colldierOff()
-    {
-        if (collider != null)
-        {
-            Debug.Log("Obstacle collider disabled");
-            collider.enabled = false;
-        }
-    }
 
 }
