@@ -3,7 +3,7 @@ using UnityEngine;
 public class obstaclescript : MonoBehaviour
 {
     //Speed and despawn values
-    public float obstaspeed=10;
+    public float obstaspeed = 10;
     public float despawnzone = -15;
 
     //Box collider management values
@@ -12,9 +12,9 @@ public class obstaclescript : MonoBehaviour
     //Reference player for movement control
     public playerscript playerlogic;
 
-// <Variables and references>
-/// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// <Start and Fixed Update>
+    // <Variables and references>
+    /// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // <Start and Fixed Update>
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +23,15 @@ public class obstaclescript : MonoBehaviour
         collider = GetComponent<BoxCollider2D>();
 
         //Obtain player script in first frame
-        playerlogic = GameObject.FindGameObjectWithTag("player").GetComponent<playerscript>();  
+        playerlogic = GameObject.FindGameObjectWithTag("player").GetComponent<playerscript>();
+
+        //Check if the buffer effect is on or off
+        if (playerlogic.buffeffect == true)
+        {
+            togglecollider();
+        }
+
+
     }
 
     // Update is called once per frame
@@ -31,11 +39,12 @@ public class obstaclescript : MonoBehaviour
     {
         obstamovement();
 
+
     }
 
-// <Start and Fixed Update>
-/// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// <Functions>
+    // <Start and Fixed Update>
+    /// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // <Functions>
 
     //Manage obstacle movement
     void obstamovement()
@@ -55,7 +64,20 @@ public class obstaclescript : MonoBehaviour
                 Destroy(gameObject);
             }
         }
-        
+    }
+
+    //Toggle obstacle colldier on and off
+    [ContextMenu("Toggle obstacle collider")]
+    void togglecollider()
+    {
+        if (collider.enabled == true)
+        {
+            collider.enabled = false;  
+        } 
+        else
+        {
+            collider.enabled = true;
+        }
     }
 
 
