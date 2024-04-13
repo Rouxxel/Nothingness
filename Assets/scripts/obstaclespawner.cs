@@ -12,18 +12,13 @@ public class obstaclespawner : MonoBehaviour
     public float lowpoint = -3;
 
     //Script references
-    public obstaclescript obstaclelogic;
-    public bufferscript bufferlogic;
-    public playerscript playerlogic;
+
 
     // Start is called before the first frame update
     void Start()
     {
         spawnobstacle();
 
-        obstaclelogic=GameObject.FindGameObjectWithTag("obstacle").GetComponent<obstaclescript>();
-        bufferlogic=GameObject.FindGameObjectWithTag("buffer").GetComponent <bufferscript>();
-        playerlogic=GameObject.FindGameObjectWithTag("player").GetComponent<playerscript>();    
     }
 
     // Update is called once per frame
@@ -31,7 +26,7 @@ public class obstaclespawner : MonoBehaviour
     {
 
         //Check timer and player control to spawn or not a clone
-        if (timer1 < spawnrate1 && playerlogic.playercontrol==true)
+        if (timer1 < spawnrate1)
         {
             timer1 = timer1 + Time.deltaTime;
         }
@@ -71,7 +66,7 @@ public class obstaclespawner : MonoBehaviour
                 break;
         }
 
-        
+        Debug.Log("Obstacle spawned");
         Instantiate(obstacles, new Vector3(transform.position.x , Random.Range(highpoint,lowpoint), -2), randrotation) ;
         
     }
