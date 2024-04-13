@@ -11,10 +11,13 @@ public class bufferspawner : MonoBehaviour
     public float highpoint = 4;
     public float lowpoint = -4;
 
+    //Reference player for spawn control
+    public playerscript playerlogic;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        playerlogic = GameObject.FindGameObjectWithTag("player").GetComponent<playerscript>();
     }
 
     // Update is called once per frame
@@ -28,8 +31,11 @@ public class bufferspawner : MonoBehaviour
         }
         else
         {
-            spawnbuffer();
-            timer1 = 0;
+            if (playerlogic.playercontrol == true) {
+                spawnbuffer();
+                timer1 = 0;
+            }
+            
         }
     }
 
