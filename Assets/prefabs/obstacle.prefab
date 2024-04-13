@@ -146,4 +146,4 @@ MonoBehaviour:
   obstaspeed: 10
   despawnzone: -30
   collider: {fileID: 3371349613602266899}
-  collideron: 1
+  playerlogic: {fileID: 0}
