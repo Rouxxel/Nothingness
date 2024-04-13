@@ -14,6 +14,9 @@ public class obstaclespawner : MonoBehaviour
     //Reference player for spawn control
     public playerscript playerlogic;
 
+// <Variables and references>
+/// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// <Start and Fixed Update>
 
     // Start is called before the first frame update
     void Start()
@@ -43,6 +46,10 @@ public class obstaclespawner : MonoBehaviour
             
         }
     }
+
+// <Start and Fixed Update>
+/// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// <Functions>
 
     //Spawn a clone and randomize Y spawning point and tilt
     void spawnobstacle()
