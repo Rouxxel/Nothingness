@@ -56,7 +56,7 @@ public class bufferscript : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        Debug.Log("Player collided with Buffer, enable effects");
      
     }
 }
