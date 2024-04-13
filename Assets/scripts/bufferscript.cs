@@ -7,14 +7,14 @@ public class bufferscript : MonoBehaviour
     public float despawnzone = -18;
     public float synthesize = 7f;
 
-    //Buffer values and obstacle script reference
-
+// <Variables and references>
+/// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// <Start and Fixed Update>
 
     // Start is called before the first frame update
     void Start()
     {
-        //Script calls in 1st frame
-        /* = GameObject.FindGameObjectWithTag("obstacle").GetComponent<obstaclescript>();*/
+   
     }
 
     // Update is called once per frame
@@ -23,15 +23,11 @@ public class bufferscript : MonoBehaviour
 
         buffermovement();
 
-  
-
     }
 
-    // Update is called once per frame
-    private void Update()
-    {
-     
-    }
+// <Start and Fixed Update>
+/// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// <Functions>
 
     //Manage buffer movement
     void buffermovement()
@@ -52,8 +48,12 @@ public class bufferscript : MonoBehaviour
         }
     }
 
+// <Functions>
+/// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// <Collisions events>
+
     //Trigger event when collision with player
-    
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("player") == true)
