@@ -26,9 +26,12 @@ public class obstaclescript : MonoBehaviour
         playerlogic = GameObject.FindGameObjectWithTag("player").GetComponent<playerscript>();
 
         //Check if the buffer effect is on or off
-        if (playerlogic.buffeffect == true)
+        if (playerlogic.buffdisableobstacle == true)
         {
-            togglecollider();
+            togglecollideroff();
+        } else
+        {
+            togglecollideron();
         }
 
 
@@ -39,6 +42,15 @@ public class obstaclescript : MonoBehaviour
     {
         obstamovement();
 
+        //Constantly check if the buffer effect is on or off
+        if (playerlogic.buffdisableobstacle == true)
+        {
+            togglecollideroff();
+        }
+        else
+        {
+            togglecollideron();
+        }
 
     }
 
@@ -66,19 +78,26 @@ public class obstaclescript : MonoBehaviour
         }
     }
 
-    //Toggle obstacle colldier on and off
-    [ContextMenu("Toggle obstacle collider")]
-    void togglecollider()
+    //Toggle obstacle colldier on
+    [ContextMenu("Toggle obstacle collider on")]
+    void togglecollideron()
+    {
+        if (collider.enabled == false)
+        {
+            Debug.Log("Obstacle collider enabled");
+            collider.enabled = true;  
+        } 
+    }
+
+    //Toggle obstacle colldier off
+    [ContextMenu("Toggle obstacle collider off")]
+    void togglecollideroff()
     {
         if (collider.enabled == true)
         {
-            collider.enabled = false;  
-        } 
-        else
-        {
-            collider.enabled = true;
+            Debug.Log("Obstacle collider disabled");
+            collider.enabled = false;
         }
     }
-
 
 }
