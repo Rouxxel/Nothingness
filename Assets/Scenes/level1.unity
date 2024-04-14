@@ -152,7 +152,7 @@ Transform:
   m_GameObject: {fileID: 24745037}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0.5, z: 0}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 0.3987, y: 0.603771, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -171,15 +171,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerbody: {fileID: 24745041}
+  playercollider: {fileID: 24745040}
   upwardstrength: 30
   sidewaysstrength: 10
   downwardstrength: 5
-  rotationspeed: 10
+  rotationspeed: 60
   playercontrol: 1
   upward: 119
   downward: 115
   leftsideways: 97
   rightsideways: 100
+  buffeffect: 0
+  buffapplied: 0
+  buffmaxdelay: 10
+  bufftimer: 0
+  buffdisableobstacle: 0
+  bufftype: -1
 --- !u!61 &24745040
 BoxCollider2D:
   m_ObjectHideFlags: 0
