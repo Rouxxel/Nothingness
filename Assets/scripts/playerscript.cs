@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class playerscript : MonoBehaviour
@@ -19,14 +20,14 @@ public class playerscript : MonoBehaviour
     public KeyCode leftsideways = KeyCode.A;
     public KeyCode rightsideways = KeyCode.D;
 
-    //References for other scripts and variables
-    public bufferscript bufferlogic;
-    public obstaclescript obstaclelogic;
+    //Variables for buff effects
     public bool buffeffect=false;
+    public bool buffapplied=false;
     public float buffmaxdelay = 10;
     public float bufftimer = 0;
 
-    public int bufftype = 0;
+    public bool buffdisableobstacle = false;
+    public int bufftype = -1;
 
 // <Variables and references>
 /// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -37,39 +38,18 @@ public class playerscript : MonoBehaviour
     {
         //Reference the Rigid body for movement
         playerbody = GetComponent<Rigidbody2D>();
-
-        //Obtain other scripts
-        obstaclelogic = GameObject.FindGameObjectWithTag("obstacle").GetComponent<obstaclescript>();   
-        bufferlogic = GameObject.FindGameObjectWithTag("buffer").GetComponent<bufferscript>();
+        playercollider = GetComponent<BoxCollider2D>(); 
 
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        //Constantly call movement function
         playermovement();
 
-        //Check if player is out of bounds
-        if(transform.position.x < -28 || transform.position.y > 15 || transform.position.y < -15) {
-            Debug.Log("Player despawned");
-            Destroy(gameObject);
-        }
-  
-        //Check if buff effect is true or not 
-        if (buffeffect == true)
-        {
-
-            if (bufftimer <= buffmaxdelay)
-            {
-                bufftimer = bufftimer + Time.deltaTime;
-            } 
-            else
-            {
-                Debug.Log("Buffer effect has ended");
-                buffeffect = false;
-                bufftimer = 0;
-            }
-        }
+        //Constantly call buff function
+        buffmanagement();
 
     }
 
@@ -133,6 +113,102 @@ public class playerscript : MonoBehaviour
 
     }
 
+    //Buff management
+    //If new buff is to be added, create extra case in both switch statements to change and reverse the change
+    void buffmanagement()
+    {
+        //Check if player is out of bounds
+        if (transform.position.x < -28 || transform.position.y > 15 || transform.position.y < -15)
+        {
+            Debug.Log("Player despawned");
+            Destroy(gameObject);
+        }
+
+        // Check if buff effect is true or not and if buff type has been selected
+        if (buffeffect && bufftype >= 0)
+        {
+            // If buff has not been applied yet, apply it
+            if (buffapplied == false)
+            {
+                // Enable buff according to type
+                switch (bufftype)
+                {
+                    case 0:
+                        // Disable obstacle collider
+                        Debug.Log("Buff 0 applied, disable obstacle collider");
+                        buffdisableobstacle = true;
+                        break;
+
+                    case 1:
+                        // Disable player collider and increase speed
+                        Debug.Log("Buff 1 applied, disable obstacle collider and increase speed");
+                        buffdisableobstacle = true;
+                        upwardstrength = upwardstrength * 2;
+                        downwardstrength = downwardstrength * 2;
+                        sidewaysstrength = sidewaysstrength * 2;
+                        break;
+                    case 2:
+                        //Reduce player movement
+                        Debug.Log("Debuff 2 applied, reduce player speed");
+                        upwardstrength = upwardstrength - 5;
+                        downwardstrength = downwardstrength / 2;
+                        sidewaysstrength = sidewaysstrength / 2;
+                        break;
+                    default:
+                        break;
+                }
+
+                // Set buffApplied to true to indicate that the buff has been applied
+                buffapplied = true;
+            }
+
+
+            // Check buffer timer
+            if (bufftimer <= buffmaxdelay)
+            {
+                bufftimer = bufftimer + Time.deltaTime;
+            }
+            else
+            {
+                // Re-enable collider or decrease speed to normal based on buff type
+                switch (bufftype)
+                {
+                    case 0:
+                        // Re-enable obstacle collider
+                        Debug.Log("Buff 0 deapplied, enable obstacle collider");
+                        buffdisableobstacle = false;
+                        break;
+
+                    case 1:
+                        // Re-enable player collider and decrease speed to normal
+                        Debug.Log("Buff 1 deapplied, enable obstacle collider and decrease speed back to normal");
+                        buffdisableobstacle = false;
+                        upwardstrength = upwardstrength / 2;
+                        downwardstrength = downwardstrength / 2;
+                        sidewaysstrength = sidewaysstrength / 2;
+                        break;
+                    case 2:
+                        //Revert player movement back to normal
+                        Debug.Log("Debuff 2 deapplied, increase player speed");
+                        upwardstrength = upwardstrength + 5;
+                        downwardstrength = downwardstrength * 2;
+                        sidewaysstrength = sidewaysstrength * 2;
+                        break;
+
+                    default:
+                        break;
+                }
+
+                // Reset buff values
+                Debug.Log("Buffer effect has ended, reverse buff management values");
+                buffeffect = false;
+                bufftype = -1;
+                bufftimer = 0;
+                buffapplied = false; // Reset buffApplied to allow the buff to be applied again
+            }
+        }
+    }
+
 // <Functions>
 /// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // <Collisions events>
@@ -155,7 +231,11 @@ public class playerscript : MonoBehaviour
         //Check if player collided with buffer
         if (collision.gameObject.tag == "buffer")
         {
+            //enable buffer effect
             buffeffect = true; 
+
+            //select random buffer,if new buffer is to be added, increase the max Range
+            bufftype = Random.Range(0,3);   
         }
          
         
