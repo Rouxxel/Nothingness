@@ -43,13 +43,22 @@ public class bufferscript : MonoBehaviour
         if (transform.position.x > despawnzone)
         {
             //Move buffer in X axis
-            transform.position = transform.position + (Vector3.left * bufferspeed) * Time.deltaTime;
+            Vector3 buffermov = transform.position + (Vector3.left * bufferspeed) * Time.deltaTime;
 
             //Move buffer in Synthe pattern
+            buffermov.y = Mathf.Sin(Time.time) * synthesize;
+            transform.position = buffermov;
+
+            /*
             transform.position = new Vector3(transform.position.x, (Mathf.Sin(Time.time) * synthesize), transform.position.z);
+            */
 
             //Create cycle effect
+            transform.Rotate(Vector3.up, buffyrotationspeed * Time.deltaTime);
+
+            /*
             transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0,buffrotation,0), buffyrotationspeed * Time.deltaTime);
+            */
         }
         else
         {
@@ -66,7 +75,7 @@ public class bufferscript : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //Despawn buffer upon collision with player
-        if (collision.gameObject.CompareTag("player") == true)
+        if (collision.gameObject.CompareTag("player") == true && playerlogic.playercontrol == true)
         {
             Debug.Log("Player collided with Buffer, despawn buffer");
 
