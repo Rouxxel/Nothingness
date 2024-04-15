@@ -692,7 +692,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buffer: {fileID: 3332308538790068133, guid: aff3f26b4bf6ff243a2994988b09ec81, type: 3}
-  spawnrate1: 1
+  spawnrate1: 30
   highpoint: 6
   lowpoint: -6
   playerlogic: {fileID: 0}
@@ -741,7 +741,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstacles: {fileID: 7463974274545166722, guid: 6f550ecdce3452b468ffb0df182e1af1, type: 3}
-  spawnrate1: 1
+  initialspawnrate: 10
+  spawnrate1: 10
+  spawnratedecreaserate: 10
+  spawnratedecrease: 0.5
   highpoint: 6
   lowpoint: -6
   playerlogic: {fileID: 0}
