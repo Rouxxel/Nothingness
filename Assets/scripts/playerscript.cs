@@ -219,7 +219,7 @@ public class playerscript : MonoBehaviour
         if (collision.gameObject.tag == "obstacle")
         {
             //Disable player control and the object's collision
-            Debug.Log("Player control and and collider2D disabled");
+            Debug.Log("Player control");
             playercontrol = false;
         }   
     }
@@ -229,7 +229,7 @@ public class playerscript : MonoBehaviour
     {
 
         //Check if player collided with buffer
-        if (collision.gameObject.tag == "buffer")
+        if (collision.gameObject.tag == "buffer" && playercontrol == true)
         {
             //enable buffer effect
             buffeffect = true; 
