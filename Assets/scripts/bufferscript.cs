@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class bufferscript : MonoBehaviour
@@ -7,6 +6,9 @@ public class bufferscript : MonoBehaviour
     public float bufferspeed = 10;
     public float despawnzone = -18;
     public float synthesize = 7f;
+
+    public float buffrotation =45f;
+    public float buffyrotationspeed =90f;
 
     //Reference to player script
     public playerscript playerlogic;
@@ -45,6 +47,9 @@ public class bufferscript : MonoBehaviour
 
             //Move buffer in Synthe pattern
             transform.position = new Vector3(transform.position.x, (Mathf.Sin(Time.time) * synthesize), transform.position.z);
+
+            //Create cycle effect
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0,buffrotation,0), buffyrotationspeed * Time.deltaTime);
         }
         else
         {
