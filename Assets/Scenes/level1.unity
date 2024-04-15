@@ -691,7 +691,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44c502444bf0af24d9a6b7219cea7a6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buffer: {fileID: 3773200246306977817, guid: 652fd0493b7b37143aa5660a08cbe3e5, type: 3}
+  buffer: {fileID: 3332308538790068133, guid: aff3f26b4bf6ff243a2994988b09ec81, type: 3}
   spawnrate1: 1
   highpoint: 6
   lowpoint: -6
@@ -740,7 +740,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 633fa8f19624f73419de847ff77092ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstacles: {fileID: 1263908029690978850, guid: e944181d23b7b854787ce9c62b41a712, type: 3}
+  obstacles: {fileID: 7463974274545166722, guid: 6f550ecdce3452b468ffb0df182e1af1, type: 3}
   spawnrate1: 1
   highpoint: 6
   lowpoint: -6
