@@ -4,8 +4,17 @@ public class obstaclespawner : MonoBehaviour
 {
     //Reference and management values
     public GameObject obstacles;
-    public float spawnrate1 = 4;
+    public float initialspawnrate = 10;
+    public float spawnrate1 = 10;
     private float timer1 = 0;
+
+
+    //Variables to accelerate obstacle spawner
+    public float spawnratedecreaserate = 10f;
+    public float spawnratedecrease = 0.5f;
+
+    //Track time since last spawnrate decrease variable
+    private float lastspawndecreas = 0;
 
     //Establish highest and lowest range
     public float highpoint = 3;
@@ -43,6 +52,18 @@ public class obstaclespawner : MonoBehaviour
                 spawnobstacle();
                 timer1 = 0;
             }
+        }
+
+        //Decrease spawnrate overtime
+        if (playerlogic.playercontrol == true && Time.time - lastspawndecreas >= spawnratedecreaserate)
+        {
+            //Limit spawnrate decrease no less than 1
+            if (spawnrate1 > 1)
+            {
+                spawnrate1 = spawnrate1 - spawnratedecrease;
+            }
+            
+            lastspawndecreas = Time.time;
         }
 
     }
