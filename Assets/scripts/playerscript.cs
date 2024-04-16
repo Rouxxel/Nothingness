@@ -216,7 +216,7 @@ public class playerscript : MonoBehaviour
     //Disable player control if collision with obstacle
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "obstacle")
+        if (collision.gameObject.tag == "obstacle" || collision.gameObject.tag == "enemyship")
         {
             //Disable player control and the object's collision
             Debug.Log("Player control");
