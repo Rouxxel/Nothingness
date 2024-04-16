@@ -13,6 +13,7 @@ TagManager:
   - logicmanager
   - enemyship
   - enemyshipspawner
+  - background
   layers:
   - Default
   - TransparentFX
