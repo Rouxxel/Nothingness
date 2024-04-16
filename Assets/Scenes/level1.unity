@@ -741,10 +741,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstacles: {fileID: 7463974274545166722, guid: 6f550ecdce3452b468ffb0df182e1af1, type: 3}
-  initialspawnrate: 10
   spawnrate1: 10
-  spawnratedecreaserate: 10
-  spawnratedecrease: 0.5
+  timer1: 0
+  maxtimetodecrease: 15
+  decreasetimer: 0
+  reducespawnrateamount: 0.5
   highpoint: 6
   lowpoint: -6
   playerlogic: {fileID: 0}
