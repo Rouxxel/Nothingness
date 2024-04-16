@@ -156,6 +156,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bufferspeed: 10
-  despawnzone: -28
+  despawnzone: -30
   synthesize: 7
+  buffrotation: 45
+  buffyrotationspeed: 90
   playerlogic: {fileID: 0}
