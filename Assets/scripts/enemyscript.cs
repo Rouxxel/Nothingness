@@ -6,6 +6,11 @@ public class enemyscript : MonoBehaviour
     public float enemyspeed = 10;
     public float despawnzone = -15;
 
+    /*
+    //Box collider management value
+    public BoxCollider2D enemycollider;
+    */
+
     // <Variables and references>
     /// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // <Start and Fixed Update>
