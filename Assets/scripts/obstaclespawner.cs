@@ -2,19 +2,17 @@ using UnityEngine;
 
 public class obstaclespawner : MonoBehaviour
 {
-    //Reference and management values
+    //Reference to game object to spawn
     public GameObject obstacles;
-    public float initialspawnrate = 10;
+
+    //Variables to spawn objects perioducally
     public float spawnrate1 = 10;
-    private float timer1 = 0;
+    public float timer1 = 0;
 
-
-    //Variables to accelerate obstacle spawner
-    public float spawnratedecreaserate = 10f;
-    public float spawnratedecrease = 0.5f;
-
-    //Track time since last spawnrate decrease variable
-    private float lastspawndecreas = 0;
+    //Values to decrease spawnrate periodically
+    public float maxtimetodecrease = 15;
+    public float decreasetimer = 0;
+    public float reducespawnrateamount = 0.5f;
 
     //Establish highest and lowest range
     public float highpoint = 3;
@@ -54,17 +52,16 @@ public class obstaclespawner : MonoBehaviour
             }
         }
 
-        //Decrease spawnrate overtime
-        if (playerlogic.playercontrol == true && Time.time - lastspawndecreas >= spawnratedecreaserate)
+        //Check timer to check if its necessary to decrease spawnrate
+        if (decreasetimer < maxtimetodecrease)
         {
-            //Limit spawnrate decrease no less than 1
-            if (spawnrate1 > 1)
-            {
-                spawnrate1 = spawnrate1 - spawnratedecrease;
-            }
-            
-            lastspawndecreas = Time.time;
+            decreasetimer = decreasetimer + Time.deltaTime;
+        } else
+        {
+            decreasespawnrate(reducespawnrateamount);
+            decreasetimer = 0;
         }
+        
 
     }
 
@@ -104,6 +101,12 @@ public class obstaclespawner : MonoBehaviour
         Debug.Log("Obstacle spawned");
         Instantiate(obstacles, new Vector3(transform.position.x , Random.Range(highpoint,lowpoint), -2), randrotation) ;
         
+    }
+
+    //Decrease spawnrate perioducally
+    void decreasespawnrate (float reduceamount)
+    {
+        spawnrate1=spawnrate1-reduceamount; 
     }
 
 }
