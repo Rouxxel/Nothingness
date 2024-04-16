@@ -130,17 +130,17 @@ public class playerscript : MonoBehaviour
             // If buff has not been applied yet, apply it
             if (buffapplied == false)
             {
-                // Enable buff according to type
+                // Enable buff or debuff according to type
                 switch (bufftype)
                 {
                     case 0:
-                        // Disable obstacle collider
+                        // Buff, Disable obstacle collider
                         Debug.Log("Buff 0 applied, disable obstacle collider");
                         buffdisableobstacle = true;
                         break;
 
                     case 1:
-                        // Disable player collider and increase speed
+                        // Buff, Disable obstacle collider and increase speed
                         Debug.Log("Buff 1 applied, disable obstacle collider and increase speed");
                         buffdisableobstacle = true;
                         upwardstrength = upwardstrength * 2;
@@ -148,9 +148,9 @@ public class playerscript : MonoBehaviour
                         sidewaysstrength = sidewaysstrength * 2;
                         break;
                     case 2:
-                        //Reduce player movement
+                        //Debuff, Reduce player movement
                         Debug.Log("Debuff 2 applied, reduce player speed");
-                        upwardstrength = upwardstrength - 5;
+                        upwardstrength = upwardstrength / 2;
                         downwardstrength = downwardstrength / 2;
                         sidewaysstrength = sidewaysstrength / 2;
                         break;
@@ -170,7 +170,7 @@ public class playerscript : MonoBehaviour
             }
             else
             {
-                // Re-enable collider or decrease speed to normal based on buff type
+                // Reverse effects of buffer or debuffer
                 switch (bufftype)
                 {
                     case 0:
@@ -180,7 +180,7 @@ public class playerscript : MonoBehaviour
                         break;
 
                     case 1:
-                        // Re-enable player collider and decrease speed to normal
+                        // Re-enable Obstacle collider and decrease speed to normal
                         Debug.Log("Buff 1 deapplied, enable obstacle collider and decrease speed back to normal");
                         buffdisableobstacle = false;
                         upwardstrength = upwardstrength / 2;
@@ -190,7 +190,7 @@ public class playerscript : MonoBehaviour
                     case 2:
                         //Revert player movement back to normal
                         Debug.Log("Debuff 2 deapplied, increase player speed");
-                        upwardstrength = upwardstrength + 5;
+                        upwardstrength = upwardstrength * 2;
                         downwardstrength = downwardstrength * 2;
                         sidewaysstrength = sidewaysstrength * 2;
                         break;
