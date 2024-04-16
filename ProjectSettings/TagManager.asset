@@ -11,6 +11,8 @@ TagManager:
   - bufferspawner
   - invisiblewalls
   - logicmanager
+  - enemyship
+  - enemyshipspawner
   layers:
   - Default
   - TransparentFX
