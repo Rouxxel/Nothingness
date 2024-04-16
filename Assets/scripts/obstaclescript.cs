@@ -7,7 +7,7 @@ public class obstaclescript : MonoBehaviour
     public float despawnzone = -15;
 
     //Box collider management values
-    public new BoxCollider2D collider;
+    public BoxCollider2D collider;
 
     //Reference player for movement control
     public playerscript playerlogic;
