@@ -5,7 +5,7 @@ public class obstaclespawner : MonoBehaviour
     //Reference to game object to spawn
     public GameObject obstacles;
 
-    //Variables to spawn objects perioducally
+    //Variables to spawn objects periodically
     public float spawnrate1 = 10;
     public float timer1 = 0;
 
@@ -52,15 +52,21 @@ public class obstaclespawner : MonoBehaviour
             }
         }
 
-        //Check timer to check if its necessary to decrease spawnrate
-        if (decreasetimer < maxtimetodecrease)
+        //Limit spawnrate decrease to 1
+        if (spawnrate1 > 1)
         {
-            decreasetimer = decreasetimer + Time.deltaTime;
-        } else
-        {
-            decreasespawnrate(reducespawnrateamount);
-            decreasetimer = 0;
+            //Check timer to check if its necessary to decrease spawnrate
+            if (decreasetimer < maxtimetodecrease)
+            {
+                decreasetimer = decreasetimer + Time.deltaTime;
+            }
+            else
+            {
+                decreasespawnrate(reducespawnrateamount);
+                decreasetimer = 0;
+            }
         }
+    
         
 
     }
