@@ -33,6 +33,7 @@ public class cometspawner : MonoBehaviour
         {
 
             spawncomet();
+            spawncomet();
             timer1 = 0;
         }
     }
