@@ -7,6 +7,9 @@ public class cometspawner : MonoBehaviour
     public float spawnrate1 = 5;
     private float timer1 = 0;
 
+    public float spawnrate2 = 7;
+    private float timer2 = 0;
+
     //Establish highest and lowest range
     public float highestpoint = 8;
     public float lowestpoint = -8;
@@ -24,17 +27,26 @@ public class cometspawner : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        //Check timer if to spawn enemy or not
+        //Check timer if to spawn comet or not
         if (timer1 < spawnrate1)
         {
             timer1 = timer1 + Time.deltaTime;
         }
         else
         {
-
-            spawncomet();
             spawncomet();
             timer1 = 0;
+        }
+
+        //Check timer if to spawn second comet or not
+        if (timer2 < spawnrate2)
+        {
+            timer2 = timer2 + Time.deltaTime;
+        }
+        else
+        {
+            spawncomet();
+            timer2 = 0;
         }
     }
 
