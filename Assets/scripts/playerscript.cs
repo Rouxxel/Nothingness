@@ -32,7 +32,9 @@ public class playerscript : MonoBehaviour
     public AudioSource thrustereffect;
     public AudioSource crasheffect;
     public AudioSource buffereffect;
+    public AudioSource buffereffectstopping;
     public AudioSource electriccrasheffect;
+    public AudioSource powerdowneffect; //Always play if player loses
 
 // <Variables and references>
 /// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -43,7 +45,10 @@ public class playerscript : MonoBehaviour
     {
         //Reference the Rigid body for movement
         playerbody = GetComponent<Rigidbody2D>();
-        playercollider = GetComponent<BoxCollider2D>(); 
+        playercollider = GetComponent<BoxCollider2D>();
+
+        //Play thrusters effects
+        thrustereffect.Play();
 
     }
 
@@ -155,12 +160,6 @@ public class playerscript : MonoBehaviour
     //If new buff is to be added, create extra case in both switch statements to change and reverse the change
     void buffmanagement()
     {
-        //Check if player is out of bounds
-        if (transform.position.x < -28 || transform.position.y > 15 || transform.position.y < -15)
-        {
-            Debug.Log("Player despawned");
-            Destroy(gameObject);
-        }
 
         // Check if buff effect is true or not and if buff type has been selected
         if (buffeffect && bufftype >= 0)
@@ -243,6 +242,9 @@ public class playerscript : MonoBehaviour
                 bufftype = -1;
                 bufftimer = 0;
                 buffapplied = false; // Reset buffApplied to allow the buff to be applied again
+
+                //Play buffer stopping sound effect
+                buffereffectstopping.Play();
             }
         }
     }
@@ -254,12 +256,32 @@ public class playerscript : MonoBehaviour
     //Disable player control if collision with obstacle
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "obstacle" || collision.gameObject.tag == "enemyship")
+        //Collision with obstacle
+        if (collision.gameObject.tag == "obstacle")
+        {
+            //Disable player control
+            Debug.Log("Player control disabled, crashed with obstacle");
+            playercontrol = false;
+
+            //Manage sound effects
+            electriccrasheffect.Play();
+            powerdowneffect.Play();
+            thrustereffect.Stop();
+        }   
+
+        //Collision with enemy ship
+        if (collision.gameObject.tag == "enemyship")
         {
             //Disable player control and the object's collision
-            Debug.Log("Player control");
+            Debug.Log("Player control disabled, crashed with enemyship");
             playercontrol = false;
-        }   
+
+            //Manage sound effects
+            crasheffect.Play();
+            powerdowneffect.Play();
+            thrustereffect.Stop();
+        }
+        
     }
 
     //Apply buffer effects on obstacles
@@ -274,6 +296,9 @@ public class playerscript : MonoBehaviour
 
             //select random buffer,if new buffer is to be added, increase the max Range
             bufftype = Random.Range(0,3);   
+
+            //Play buffer audio effect
+            buffereffect.Play();
         }
          
         
