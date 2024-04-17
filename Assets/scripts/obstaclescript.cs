@@ -48,16 +48,14 @@ public class obstaclescript : MonoBehaviour
         obstamovement();
 
         //Constantly check if the buffer effect is on or off
-        if (playerlogic.buffdisableobstacle != null)
+            
+        if (playerlogic.buffdisableobstacle == true)
         {
-            if (playerlogic.buffdisableobstacle == true)
-            {
-                togglecollideroff();
-            }
-            else
-            {
-                togglecollideron();
-            }
+            togglecollideroff();
+        }
+        else
+        {
+            togglecollideron();
         }
 
     }
