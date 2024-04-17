@@ -72,33 +72,41 @@ public class playerscript : MonoBehaviour
                 //X-axis movement
                 case (true, false, false, false):
                     movementdirection = Vector2.left * sidewaysstrength;
+                    transform.rotation = Quaternion.Euler(0, 0, 180);
                     break;
                 case (false, false, true, false):
                     movementdirection = Vector2.right * sidewaysstrength;
+                    transform.rotation = Quaternion.Euler(0, 0, 0);
                     break;
 
                 //Y-axis movement
                 case (false, true, false, false):
                     movementdirection = Vector2.up * upwardstrength;
+                    transform.rotation = Quaternion.Euler(0, 0, 90);
                     break;
                 case (false, false, false, true):
                     movementdirection = Vector2.down * downwardstrength;
+                    transform.rotation = Quaternion.Euler(0, 0, 270);
                     break;
 
                 //X and Y axis movement upwards
                 case (true, true, false, false):
                     movementdirection = (Vector2.left * sidewaysstrength + Vector2.up * upwardstrength);
+                    transform.rotation = Quaternion.Euler(0, 0, 135);
                     break;
                 case (false, true, true, false):
                     movementdirection = (Vector2.right * sidewaysstrength + Vector2.up * upwardstrength);
+                    transform.rotation = Quaternion.Euler(0, 0, 45);
                     break;
 
                 //X and Y axis movement downwards
                 case (true, false, false, true):
                     movementdirection = (Vector2.left * sidewaysstrength + Vector2.down * downwardstrength);
+                    transform.rotation = Quaternion.Euler(0, 0, 225);
                     break;
                 case (false, false, true, true):
                     movementdirection = (Vector2.right * sidewaysstrength + Vector2.down * downwardstrength);
+                    transform.rotation = Quaternion.Euler(0, 0, 315);
                     break;
 
                 //Default no movement
