@@ -26,13 +26,18 @@ public class obstaclescript : MonoBehaviour
         playerlogic = GameObject.FindGameObjectWithTag("player").GetComponent<playerscript>();
 
         //Check if the buffer effect is on or off
-        if (playerlogic.buffdisableobstacle == true)
+        if (playerlogic.buffdisableobstacle != null)
         {
-            togglecollideroff();
-        } else
-        {
-            togglecollideron();
+            if (playerlogic.buffdisableobstacle == true)
+            {
+                togglecollideroff();
+            }
+            else
+            {
+                togglecollideron();
+            }
         }
+
 
 
     }
@@ -43,13 +48,16 @@ public class obstaclescript : MonoBehaviour
         obstamovement();
 
         //Constantly check if the buffer effect is on or off
-        if (playerlogic.buffdisableobstacle == true)
+        if (playerlogic.buffdisableobstacle != null)
         {
-            togglecollideroff();
-        }
-        else
-        {
-            togglecollideron();
+            if (playerlogic.buffdisableobstacle == true)
+            {
+                togglecollideroff();
+            }
+            else
+            {
+                togglecollideron();
+            }
         }
 
     }
