@@ -4,7 +4,9 @@ public class logicscript : MonoBehaviour
 {
 
 
-
+// <Variables and references>
+/// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// <Start and Fixed Update>
 
     // Start is called before the first frame update
     void Start()
@@ -13,8 +15,13 @@ public class logicscript : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         
     }
+
+// <Start and Fixed Update>
+/// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// <Functions>
+
 }
