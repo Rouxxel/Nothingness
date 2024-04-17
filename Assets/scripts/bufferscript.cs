@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class bufferscript : MonoBehaviour
 {
-    //Speed and despawn zone
+    //Speed, despawn zone and synthe curvature
     public float bufferspeed = 10;
     public float despawnzone = -18;
     public float synthesize = 7f;
