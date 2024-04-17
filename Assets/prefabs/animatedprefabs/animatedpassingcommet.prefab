@@ -119,5 +119,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e6f2222d910ca9488a0248173843de4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstaspeed: 45
+  obstaspeed: 70
   despawnzone: -30
