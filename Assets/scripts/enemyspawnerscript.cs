@@ -95,6 +95,7 @@ public class enemyspawnerscript : MonoBehaviour
         Instantiate(enemyship, new Vector3(transform.position.x, selection, -3),transform.rotation);
     }
 
+    //Function to reduce spawnrate when called
     void reducespawnrate(float decreasevalue)
     {
         spawnrate1 = spawnrate1 - decreasevalue;
