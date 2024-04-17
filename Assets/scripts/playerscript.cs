@@ -71,42 +71,67 @@ public class playerscript : MonoBehaviour
             {
                 //X-axis movement
                 case (true, false, false, false):
-                    movementdirection = Vector2.left * sidewaysstrength;
-                    transform.rotation = Quaternion.Euler(0, 0, 180);
+                    if (transform.position.x > -22)
+                    {
+                        movementdirection = Vector2.left * sidewaysstrength;
+                        transform.rotation = Quaternion.Euler(0, 0, 180);
+                    }
                     break;
                 case (false, false, true, false):
-                    movementdirection = Vector2.right * sidewaysstrength;
-                    transform.rotation = Quaternion.Euler(0, 0, 0);
+                    if (transform.position.x < 22)
+                    {
+                        movementdirection = Vector2.right * sidewaysstrength;
+                        transform.rotation = Quaternion.Euler(0, 0, 0);
+                    }
+                    
                     break;
 
                 //Y-axis movement
                 case (false, true, false, false):
-                    movementdirection = Vector2.up * upwardstrength;
-                    transform.rotation = Quaternion.Euler(0, 0, 90);
+                    if (transform.position.y < 9.4f)
+                    {
+                        movementdirection = Vector2.up * upwardstrength;
+                        transform.rotation = Quaternion.Euler(0, 0, 90);
+                    }
                     break;
                 case (false, false, false, true):
-                    movementdirection = Vector2.down * downwardstrength;
-                    transform.rotation = Quaternion.Euler(0, 0, 270);
+                    if (transform.position.y > -9.4f)
+                    {
+                        movementdirection = Vector2.down * downwardstrength;
+                       transform.rotation = Quaternion.Euler(0, 0, 270);
+                    }
                     break;
 
                 //X and Y axis movement upwards
                 case (true, true, false, false):
-                    movementdirection = (Vector2.left * sidewaysstrength + Vector2.up * upwardstrength);
-                    transform.rotation = Quaternion.Euler(0, 0, 135);
+                    if (transform.position.x > -22 && transform.position.y < 9.4f)
+                    {
+                        movementdirection = (Vector2.left * sidewaysstrength + Vector2.up * upwardstrength);
+                        transform.rotation = Quaternion.Euler(0, 0, 135);
+                    }
                     break;
                 case (false, true, true, false):
-                    movementdirection = (Vector2.right * sidewaysstrength + Vector2.up * upwardstrength);
-                    transform.rotation = Quaternion.Euler(0, 0, 45);
+                    if (transform.position.x < 22 && transform.position.y < 9.4f)
+                    {
+                        movementdirection = (Vector2.right * sidewaysstrength + Vector2.up * upwardstrength);
+                        transform.rotation = Quaternion.Euler(0, 0, 45);
+                    }
                     break;
 
                 //X and Y axis movement downwards
                 case (true, false, false, true):
-                    movementdirection = (Vector2.left * sidewaysstrength + Vector2.down * downwardstrength);
-                    transform.rotation = Quaternion.Euler(0, 0, 225);
+                    if (transform.position.x > -22 && transform.position.y > -9.4f)
+                    {
+                        movementdirection = (Vector2.left * sidewaysstrength + Vector2.down * downwardstrength);
+                        transform.rotation = Quaternion.Euler(0, 0, 225);
+                    }
                     break;
                 case (false, false, true, true):
-                    movementdirection = (Vector2.right * sidewaysstrength + Vector2.down * downwardstrength);
-                    transform.rotation = Quaternion.Euler(0, 0, 315);
+                    if (transform.position.x < 22 && transform.position.y > -9.4f)
+                    {
+                        movementdirection = (Vector2.right * sidewaysstrength + Vector2.down * downwardstrength);
+                        transform.rotation = Quaternion.Euler(0, 0, 315);
+                    }
                     break;
 
                 //Default no movement
