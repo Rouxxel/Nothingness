@@ -28,6 +28,12 @@ public class playerscript : MonoBehaviour
     public bool buffdisableobstacle = false;
     public int bufftype = -1;
 
+    //Manage audio sources
+    public AudioSource thrustereffect;
+    public AudioSource crasheffect;
+    public AudioSource buffereffect;
+    public AudioSource electriccrasheffect;
+
 // <Variables and references>
 /// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // <Start and Fixed Update>
