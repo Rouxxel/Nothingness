@@ -169,6 +169,7 @@ MonoBehaviour:
   obstaspeed: 10
   despawnzone: -30
   collider: {fileID: 0}
+  electricsound: {fileID: 2083131205511473281}
   playerlogic: {fileID: 0}
 --- !u!82 &2083131205511473281
 AudioSource:
