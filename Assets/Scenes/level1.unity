@@ -1764,6 +1764,10 @@ MonoBehaviour:
   music: {fileID: 821287809}
   buttonpressed: {fileID: 821287811}
   milestoneachieved: {fileID: 821287810}
+  playerlogic: {fileID: 0}
+  obstaclelogic: {fileID: 0}
+  enemylogic: {fileID: 0}
+  enemy2logic: {fileID: 0}
   gameispaused: 0
   pausebutton: {fileID: 1465526974}
   pausedscreen: {fileID: 1724158232}
@@ -1773,6 +1777,7 @@ MonoBehaviour:
   musicison: 1
   buttonsfxon: {fileID: 1064777424}
   buttonsfxoff: {fileID: 1106169530}
+  sfxison: 1
 --- !u!4 &821287808
 Transform:
   m_ObjectHideFlags: 0
@@ -2338,7 +2343,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1064777427}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 821287807}
+        m_TargetAssemblyTypeName: logicscript, Assembly-CSharp
+        m_MethodName: sfxtoggle
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1064777427
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2526,7 +2543,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1106169533}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 821287807}
+        m_TargetAssemblyTypeName: logicscript, Assembly-CSharp
+        m_MethodName: sfxtoggle
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1106169533
 MonoBehaviour:
   m_ObjectHideFlags: 0
