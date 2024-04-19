@@ -148,6 +148,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyspeed: 35
   despawnzone: -55
+  flybysound: {fileID: 1296255852768887960}
 --- !u!95 &3524723158992450397
 Animator:
   serializedVersion: 5
