@@ -201,7 +201,7 @@ public class logicscript : MonoBehaviour
     public void addseconds()
     {
         timepassed = timepassed + Time.deltaTime;
-        timepassedtext.text = "Time alice: " + timepassed.ToString("F1")+"s";
+        timepassedtext.text = "Time alive: " + timepassed.ToString("F1")+"s";
     }
 
 }
