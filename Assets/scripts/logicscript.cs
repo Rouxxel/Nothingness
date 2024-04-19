@@ -13,7 +13,10 @@ public class logicscript : MonoBehaviour
     public AudioSource buttonpressed;
     public AudioSource milestoneachieved;
 
-    //Manage pause game
+    //Reference other scripts for sfx control
+    public playerscript playerlogic;
+
+    //Manage pause game for other scripts
     public bool gameispaused = false;
 
     //Manage UI screens and buttons
@@ -27,6 +30,7 @@ public class logicscript : MonoBehaviour
 
     public GameObject buttonsfxon;
     public GameObject buttonsfxoff;   
+    public bool sfxison=true;
 
 
     // <Variables and references>
@@ -35,7 +39,12 @@ public class logicscript : MonoBehaviour
 
     void Start()
     {
+        //Play music
+        music.volume = 0.5f;
         music.Play();
+
+        //Call playerscript from the beginning
+        playerlogic= GameObject.FindGameObjectWithTag("player").GetComponent<playerscript>();
     }
 
     // <Start and Fixed Update>
@@ -73,6 +82,7 @@ public class logicscript : MonoBehaviour
         pausedscreen.SetActive(true);
     }
 
+    //Function to resume the game
     public void resumegame()
     {
         Debug.Log("Game resumed");
@@ -85,7 +95,28 @@ public class logicscript : MonoBehaviour
         pausedscreen.SetActive(false);
     }
 
-    //Music and sfx management
+    public void losegamescreen()
+    {
+        Debug.Log("Game lost");
+        music.volume = 0.2f;
+        sfxison = false;
+        gameispaused=true;
+       
+
+        //Active and deactive UI accordingly
+        pausebutton.SetActive(false);
+        loserscreen.SetActive(true);   
+    }
+
+    //Functions to go between scenes
+    //Function to go back to home 
+    public void gotohome()
+    {
+        SceneManager.LoadScene("homescreen");
+    }
+
+    //Sound management
+    //Music sound management
     public void musictoggle()
     {
         if (musicison == true)
@@ -102,7 +133,7 @@ public class logicscript : MonoBehaviour
         else
         {
             Debug.Log("Music toggle on");
-            music.volume = 0.1f;
+            music.volume = 0.4f;
             buttonpressed.Play();
 
             //Activate and deactivate UI accordingly
@@ -112,24 +143,46 @@ public class logicscript : MonoBehaviour
         }
     }
 
-       /* Debug.Log("Music toggle on");
-        music.volume = 0.1f;
-        buttonpressed.Play();
-
-        //Activate and deactivate UI accordingly
-        buttonmusicon.SetActive(true);
-        buttonmusicoff.SetActive(false);  
-    }
-
-    public void musicoff()
+    //SFX sound management
+    public void sfxtoggle()
     {
-        Debug.Log("Music toggle off");
-        music.volume = 0f;
-        buttonpressed.Play();
+        if (sfxison == true)
+        {
+            Debug.Log("SFX toggle off");
+            //Audio sources at playerscript
+            playerlogic.thrustereffect.volume = 0f;
+            playerlogic.crasheffect.volume = 0f;
+            playerlogic.buffereffect.volume = 0f;
+            playerlogic.buffereffectstopping.volume = 0f;
+            playerlogic.electriccrasheffect.volume = 0f;   
+            playerlogic.powerdowneffect.volume = 0f;
 
-        //Activate and deactivate UI accordingly
-        buttonmusicon.SetActive(false);
-        buttonmusicoff.SetActive(true);
+            buttonpressed.Play();
+
+            //Activate and deactivate UI accordingly
+            buttonsfxon.SetActive(false);
+            buttonsfxoff.SetActive(true);
+            sfxison = false;
+
+        } 
+        else
+        {
+            Debug.Log("SFX toggle off");
+            //Audio sources at playerscript, revert to original state
+            playerlogic.thrustereffect.volume = 0.15f;
+            playerlogic.crasheffect.volume = 0.3f;
+            playerlogic.buffereffect.volume = 0.2f;
+            playerlogic.buffereffectstopping.volume = 0.3f;
+            playerlogic.electriccrasheffect.volume = 0.3f;
+            playerlogic.powerdowneffect.volume = 0.3f;
+
+            buttonpressed.Play();
+
+            //Activate and deactivate UI accordingly
+            buttonsfxon.SetActive(true);
+            buttonsfxoff.SetActive(false);
+            sfxison = true;
+        }
     }
-       */
+
 }
