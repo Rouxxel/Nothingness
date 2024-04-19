@@ -16,6 +16,7 @@ public class enemy2script : MonoBehaviour
 
     //Reference to player script
     public playerscript playerlogic;
+    public logicscript logiclogic;
 
 // <Variables and references>
 /// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -24,7 +25,12 @@ public class enemy2script : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Obtain player script and logic script in first frame
         playerlogic = GameObject.FindGameObjectWithTag("player").GetComponent<playerscript>();
+        logiclogic = GameObject.FindGameObjectWithTag("logicmanager").GetComponent<logicscript>();
+
+        //Execute sound effect
+        flybysound.Play();
     }
 
     // Update is called once per frame
@@ -32,6 +38,16 @@ public class enemy2script : MonoBehaviour
     {
         //Call movement call
         enemy2movement();
+
+        //Check if sound effect should be played or not
+        if (logiclogic.sfxison == false)
+        {
+            flybysound.volume = 0f;
+        }
+        else
+        {
+            flybysound.volume = 0.2f;
+        }
     }
 
 // <Start and Fixed Update>
