@@ -275,6 +275,7 @@ MonoBehaviour:
   despawnzone: -50
   amplitude: 20
   scalingfactor: 0.5
+  flybysound: {fileID: -4669602358179749300}
   playerlogic: {fileID: 0}
 --- !u!82 &-4669602358179749300
 AudioSource:
