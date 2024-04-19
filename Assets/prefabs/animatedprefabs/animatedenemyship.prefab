@@ -149,6 +149,7 @@ MonoBehaviour:
   enemyspeed: 35
   despawnzone: -55
   flybysound: {fileID: 1296255852768887960}
+  logiclogic: {fileID: 0}
 --- !u!95 &3524723158992450397
 Animator:
   serializedVersion: 5
@@ -285,8 +286,8 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 17a192f007b583840b2848074a8cea69, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 0.1
+  m_PlayOnAwake: 0
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0
