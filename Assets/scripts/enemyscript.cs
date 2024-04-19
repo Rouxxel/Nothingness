@@ -6,6 +6,9 @@ public class enemyscript : MonoBehaviour
     public float enemyspeed = 10;
     public float despawnzone = -15;
 
+    //Audio source
+    public AudioSource flybysound;
+
     /*
     //Box collider management value
     public BoxCollider2D enemycollider;
