@@ -4,10 +4,6 @@ using UnityEngine.SceneManagement;
 
 public class logicscript : MonoBehaviour
 {
-    //Manage time alive 
-    public int score = 0;
-    public Text scoretext;
-
     //Manage audio sources
     public AudioSource music;
     public AudioSource buttonpressed;
@@ -32,6 +28,10 @@ public class logicscript : MonoBehaviour
     public GameObject buttonsfxoff;   
     public bool sfxison=true;
 
+    //Variables for time player is alive
+    public float timepassed = 0f;
+    public Text timepassedtext;
+
 
     // <Variables and references>
     /// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -45,6 +45,11 @@ public class logicscript : MonoBehaviour
 
         //Call playerscript from the beginning
         playerlogic= GameObject.FindGameObjectWithTag("player").GetComponent<playerscript>();
+    }
+
+    void FixedUpdate()
+    {
+        addseconds();
     }
 
     // <Start and Fixed Update>
@@ -98,7 +103,7 @@ public class logicscript : MonoBehaviour
     public void losegamescreen()
     {
         Debug.Log("Game lost");
-        music.volume = 0.2f;
+        music.volume = 0.7f;
         sfxison = false;
         gameispaused=true;
        
@@ -108,12 +113,19 @@ public class logicscript : MonoBehaviour
         loserscreen.SetActive(true);   
     }
 
+    /*
     //Functions to go between scenes
     //Function to go back to home 
     public void gotohome()
     {
         SceneManager.LoadScene("homescreen");
     }
+
+    public void gotolevel1()
+    {
+        SceneManager.LoadScene("level1");
+    }
+    */
 
     //Sound management
     //Music sound management
@@ -183,6 +195,13 @@ public class logicscript : MonoBehaviour
             buttonsfxoff.SetActive(false);
             sfxison = true;
         }
+    }
+
+    //Manage player score which is time alive
+    public void addseconds()
+    {
+        timepassed = timepassed + Time.deltaTime;
+        timepassedtext.text = "Time alice: " + timepassed.ToString("F1")+"s";
     }
 
 }
