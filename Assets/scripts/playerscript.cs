@@ -270,7 +270,7 @@ public class playerscript : MonoBehaviour
         }   
 
         //Collision with enemy ship
-        if (collision.gameObject.tag == "enemyship")
+        if (collision.gameObject.tag == "enemyship" || collision.gameObject.tag == "enemyship2")
         {
             //Disable player control and the object's collision
             Debug.Log("Player control disabled, crashed with enemyship");
