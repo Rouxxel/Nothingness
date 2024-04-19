@@ -28,6 +28,9 @@ public class playerscript : MonoBehaviour
     public bool buffdisableobstacle = false;
     public int bufftype = -1;
 
+    //Reference logicscript to manage loser screen
+    public logicscript logiclogic;
+
     //Manage audio sources
     public AudioSource thrustereffect;
     public AudioSource crasheffect;
@@ -46,6 +49,9 @@ public class playerscript : MonoBehaviour
         //Reference the Rigid body for movement
         playerbody = GetComponent<Rigidbody2D>();
         playercollider = GetComponent<BoxCollider2D>();
+
+        //Reference logic script
+        logiclogic = GameObject.FindGameObjectWithTag("logicmanager").GetComponent<logicscript>();
 
         //Play thrusters effects
         thrustereffect.Play();
@@ -267,6 +273,9 @@ public class playerscript : MonoBehaviour
             electriccrasheffect.Play();
             powerdowneffect.Play();
             thrustereffect.Stop();
+
+            //Call logicscript function to show loser screen
+            logiclogic.losegamescreen();
         }   
 
         //Collision with enemy ship
@@ -280,6 +289,9 @@ public class playerscript : MonoBehaviour
             crasheffect.Play();
             powerdowneffect.Play();
             thrustereffect.Stop();
+
+            //Call logicscript function to show loser screen
+            logiclogic.losegamescreen();
         }
         
     }
