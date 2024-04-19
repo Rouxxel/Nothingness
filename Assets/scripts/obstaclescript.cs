@@ -12,8 +12,9 @@ public class obstaclescript : MonoBehaviour
     //Audio source
     public AudioSource electricsound;
 
-    //Reference player for movement control
+    //Reference player for movement control and logicscript for sound control
     public playerscript playerlogic;
+    public logicscript logiclogic;
 
 
 // <Variables and references>
@@ -23,11 +24,15 @@ public class obstaclescript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Start sound effect
+        electricsound.Play();
+
         //Obtain component on 1st frame
         collider = GetComponent<BoxCollider2D>();
 
-        //Obtain player script in first frame
+        //Obtain player script and logic script in first frame
         playerlogic = GameObject.FindGameObjectWithTag("player").GetComponent<playerscript>();
+        logiclogic = GameObject.FindGameObjectWithTag("logicmanager").GetComponent<logicscript>();
 
         //Check if the buffer effect is on or off
         if (playerlogic.buffdisableobstacle != null)
@@ -62,6 +67,15 @@ public class obstaclescript : MonoBehaviour
             togglecollideron();
         }
 
+        //Check if sound effect should be played or not
+        if (logiclogic.sfxison == false)
+        {
+            electricsound.volume = 0f;
+        }
+        else
+        {
+            electricsound.volume = 0.1f;
+        }
     }
 
 // <Start and Fixed Update>
