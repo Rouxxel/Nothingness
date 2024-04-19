@@ -16,6 +16,7 @@ TagManager:
   - background
   - comet
   - cometspawner
+  - enemyship2
   layers:
   - Default
   - TransparentFX
