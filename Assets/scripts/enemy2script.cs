@@ -11,6 +11,9 @@ public class enemy2script : MonoBehaviour
     public float amplitude = 9.4f;
     public float scalingfactor = 1.2f; //Control y range
 
+    //Audio source
+    public AudioSource flybysound;
+
     //Reference to player script
     public playerscript playerlogic;
 
