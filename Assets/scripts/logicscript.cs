@@ -21,6 +21,12 @@ public class logicscript : MonoBehaviour
     public GameObject pausedscreen;
     public GameObject loserscreen;
 
+    public GameObject buttonmusicon;
+    public GameObject buttonoff;
+
+    public GameObject buttonsfxon;
+    public GameObject buttonsfxoff;   
+
 
     // <Variables and references>
     /// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -60,7 +66,6 @@ public class logicscript : MonoBehaviour
         buttonpressed.Play();
         Time.timeScale = 0f;
         gameispaused = true;
-        music.Pause();
 
         //Active and deactive UI accordingly
         pausebutton.SetActive(false);
@@ -73,7 +78,6 @@ public class logicscript : MonoBehaviour
         buttonpressed.Play();
         Time.timeScale = 1f;
         gameispaused = false;
-        music.Play();
 
         //Active and deactive UI accordingly
         pausebutton.SetActive(true);
