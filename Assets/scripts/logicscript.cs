@@ -17,6 +17,7 @@ public class logicscript : MonoBehaviour
     public bool gameispaused = false;
 
     //Manage UI screens and buttons
+    public GameObject pausebutton;
     public GameObject pausedscreen;
     public GameObject loserscreen;
 
@@ -40,7 +41,7 @@ public class logicscript : MonoBehaviour
     {
         Debug.Log("Game restarted");
         buttonpressed.Play();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene("level1");
         Time.timeScale = 1f;
     }
 
@@ -60,6 +61,10 @@ public class logicscript : MonoBehaviour
         Time.timeScale = 0f;
         gameispaused = true;
         music.Pause();
+
+        //Active and deactive UI accordingly
+        pausebutton.SetActive(false);
+        pausedscreen.SetActive(true);
     }
 
     public void resumegame()
@@ -69,6 +74,10 @@ public class logicscript : MonoBehaviour
         Time.timeScale = 1f;
         gameispaused = false;
         music.Play();
+
+        //Active and deactive UI accordingly
+        pausebutton.SetActive(true);
+        pausedscreen.SetActive(false);
     }
 
     //Music and sfx management
