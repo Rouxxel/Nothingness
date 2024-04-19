@@ -9,8 +9,12 @@ public class obstaclescript : MonoBehaviour
     //Box collider management values
     public BoxCollider2D collider;
 
+    //Audio source
+    public AudioSource electricsound;
+
     //Reference player for movement control
     public playerscript playerlogic;
+
 
 // <Variables and references>
 /// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
