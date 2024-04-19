@@ -277,6 +277,7 @@ MonoBehaviour:
   scalingfactor: 0.5
   flybysound: {fileID: -4669602358179749300}
   playerlogic: {fileID: 0}
+  logiclogic: {fileID: 0}
 --- !u!82 &-4669602358179749300
 AudioSource:
   m_ObjectHideFlags: 0
@@ -288,8 +289,8 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 550fd3f0f80de0b4b93cc409801a4a50, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 0.1
+  m_PlayOnAwake: 0
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 1
   Mute: 0
