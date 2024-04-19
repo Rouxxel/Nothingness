@@ -9,6 +9,9 @@ public class enemyscript : MonoBehaviour
     //Audio source
     public AudioSource flybysound;
 
+    //Reference logicscript for sound control
+    public logicscript logiclogic;
+
     /*
     //Box collider management value
     public BoxCollider2D enemycollider;
@@ -21,7 +24,13 @@ public class enemyscript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
+        //Obtain and logic script in first frame
+        logiclogic = GameObject.FindGameObjectWithTag("logicmanager").GetComponent<logicscript>();
+
+        //Execute sound effect
+        flybysound.Play();
+
     }
 
     // Update is called once per frame
@@ -29,6 +38,16 @@ public class enemyscript : MonoBehaviour
     {
         //Call movement call
         enemymovement();
+
+        //Check if sound effect should be played or not
+        if (logiclogic.sfxison == false)
+        {
+            flybysound.volume = 0f;
+        }
+        else
+        {
+            flybysound.volume = 0.3f;
+        }
     }
 
     // <Start and Fixed Update>
