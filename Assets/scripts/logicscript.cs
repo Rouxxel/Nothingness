@@ -22,7 +22,8 @@ public class logicscript : MonoBehaviour
     public GameObject loserscreen;
 
     public GameObject buttonmusicon;
-    public GameObject buttonoff;
+    public GameObject buttonmusicoff;
+    public bool musicison=true;
 
     public GameObject buttonsfxon;
     public GameObject buttonsfxoff;   
@@ -85,11 +86,39 @@ public class logicscript : MonoBehaviour
     }
 
     //Music and sfx management
-    public void musicon()
+    public void musictoggle()
     {
-        Debug.Log("Music toggle on");
+        if (musicison == true)
+        {
+            Debug.Log("Music toggle off");
+            music.volume = 0f;
+            buttonpressed.Play();
+
+            //Activate and deactivate UI accordingly
+            buttonmusicon.SetActive(false);
+            buttonmusicoff.SetActive(true);
+            musicison = false;
+        }
+        else
+        {
+            Debug.Log("Music toggle on");
+            music.volume = 0.1f;
+            buttonpressed.Play();
+
+            //Activate and deactivate UI accordingly
+            buttonmusicon.SetActive(true);
+            buttonmusicoff.SetActive(false);
+            musicison = true;
+        }
+    }
+
+       /* Debug.Log("Music toggle on");
         music.volume = 0.1f;
         buttonpressed.Play();
+
+        //Activate and deactivate UI accordingly
+        buttonmusicon.SetActive(true);
+        buttonmusicoff.SetActive(false);  
     }
 
     public void musicoff()
@@ -97,6 +126,10 @@ public class logicscript : MonoBehaviour
         Debug.Log("Music toggle off");
         music.volume = 0f;
         buttonpressed.Play();
-    }
 
+        //Activate and deactivate UI accordingly
+        buttonmusicon.SetActive(false);
+        buttonmusicoff.SetActive(true);
+    }
+       */
 }
