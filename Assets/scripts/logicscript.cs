@@ -200,8 +200,12 @@ public class logicscript : MonoBehaviour
     //Manage player score which is time alive
     public void addseconds()
     {
-        timepassed = timepassed + Time.deltaTime;
-        timepassedtext.text = "Time alive: " + timepassed.ToString("F1")+"s";
+        if (playerlogic.playercontrol == true)
+        {
+            timepassed = timepassed + Time.deltaTime;
+            timepassedtext.text = "Time alive: " + timepassed.ToString("F1")+"s";
+        }
+        
     }
 
 }
