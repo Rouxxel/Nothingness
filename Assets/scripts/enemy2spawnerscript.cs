@@ -48,7 +48,7 @@ public class enemy2spawnerscript : MonoBehaviour
         }
 
         //Limit spawnrate decrease to 7
-        if (spawnrate1 > 7)
+        if (spawnrate1 > 7 && playerlogic.playercontrol == true)
         {
             //Check if spawnrate should be decreased or not
             if (decreasetimer < maxtimetodecrease)
