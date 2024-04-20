@@ -3459,7 +3459,7 @@ MonoBehaviour:
   spawnrate1: 20
   highestpoint: 5
   lowestpoint: -5
-  maxtimetodecrease: 25
+  maxtimetodecrease: 15
   decreasetimer: 0
   amounttodecrease: 0.5
   playerlogic: {fileID: 0}
