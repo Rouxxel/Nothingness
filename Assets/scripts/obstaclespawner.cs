@@ -52,8 +52,8 @@ public class obstaclespawner : MonoBehaviour
             }
         }
 
-        //Limit spawnrate decrease to 1
-        if (spawnrate1 > 1 && playerlogic.playercontrol == true)
+        //Limit spawnrate decrease to 3
+        if (spawnrate1 > 3 && playerlogic.playercontrol == true)
         {
             //Check timer to check if its necessary to decrease spawnrate
             if (decreasetimer < maxtimetodecrease)
