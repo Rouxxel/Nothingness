@@ -2265,7 +2265,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Time alive: 0s'
+  m_Text: 'Most alive: 0s'
 --- !u!222 &970985106
 CanvasRenderer:
   m_ObjectHideFlags: 0
