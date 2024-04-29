@@ -1,10 +1,14 @@
 using UnityEngine;
 using System.Linq;
+using System.Collections.Generic;
 
 public class Datapersistencemanager : MonoBehaviour
 {
-
+    //Variable from the Game data variables
     private GameData gameData;
+
+    //Create a list 
+    private List<Interfacedatapersistence> datapersistentobjects;
 
     // <Variables and references>
     /// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -28,6 +32,7 @@ public class Datapersistencemanager : MonoBehaviour
 
     private void Start()
     {
+        this.datapersistentobjects = Findalldatapersistentobjects();
         loadgame();
     }
 
@@ -52,17 +57,34 @@ public class Datapersistencemanager : MonoBehaviour
         {
             Debug.Log("No saved data found. Initialize to default values");
             newgame();
-        } else
-        {
-            //Push loaded data to all scripts that need it
-            
         }
+
+        //Push loaded data to all scripts that need it
+        foreach (Interfacedatapersistence interfacedatapersistence in datapersistentobjects)
+        {
+            interfacedatapersistence.loaddata(gameData);
+        }  
 
     }
 
     public void savegame()
     {
         //Pass data to other scripts so they can update it and save data using data handler
+        foreach (Interfacedatapersistence interfacedatapersistence in datapersistentobjects)
+        {
+            interfacedatapersistence.savedata(ref gameData);
+        }
+    }
+
+    private List<Interfacedatapersistence> Findalldatapersistentobjects()
+    {
+        //Find all objects that implement the Interfacoe through System Linq (They must extend from Monobehavior)
+        IEnumerable<Interfacedatapersistence> datapersistentobjects = FindObjectsOfType<MonoBehaviour>().
+            OfType<Interfacedatapersistence>();
+
+        //Initialize the list
+        return new List<Interfacedatapersistence>(datapersistentobjects);
+         
     }
 
 }
