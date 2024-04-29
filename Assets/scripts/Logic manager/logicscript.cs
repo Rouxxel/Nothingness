@@ -203,7 +203,7 @@ public class logicscript : MonoBehaviour
         if (playerlogic.playercontrol == true)
         {
             timepassed = timepassed + Time.deltaTime;
-            timepassedtext.text = "Time alive: " + timepassed.ToString("F1")+"s";
+            timepassedtext.text = "Most alive: " + timepassed.ToString("F1")+"s";
         }
         
     }
