@@ -1788,7 +1788,6 @@ MonoBehaviour:
   buttonsfxon: {fileID: 1064777424}
   buttonsfxoff: {fileID: 1106169530}
   sfxison: 1
-  timepassed: 0
   timepassedtext: {fileID: 970985105}
 --- !u!4 &821287808
 Transform:
