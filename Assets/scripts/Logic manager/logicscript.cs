@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class logicscript : MonoBehaviour
+public class logicscript : MonoBehaviour, Interfacedatapersistence
 {
     //Manage audio sources
     public AudioSource music;
@@ -29,7 +29,7 @@ public class logicscript : MonoBehaviour
     public bool sfxison=true;
 
     //Variables for time player is alive
-    public float timepassed = 0f;
+    private float timepassed = 0f;
     public Text timepassedtext;
 
 
@@ -206,6 +206,22 @@ public class logicscript : MonoBehaviour
             timepassedtext.text = "Most alive: " + timepassed.ToString("F1")+"s";
         }
         
+    }
+
+    // <Functions>
+    /// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // <Interface functions>
+
+    //Load game data
+    public void loaddata(GameData data)
+    {
+        this.timepassed=data.mosttimealive;
+    }
+
+    //Update game data to save it
+    public void savedata(ref GameData data)
+    {
+        data.mosttimealive = this.timepassed;
     }
 
 }
