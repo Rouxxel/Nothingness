@@ -28,7 +28,7 @@ public class logicscript : MonoBehaviour, Interfacedatapersistence
     public GameObject buttonsfxoff;   
     public bool sfxison=true;
 
-    //Variables for time player is alive
+    //Variables for time player is alive and the data thata wants to be saved
     private float timepassed = 0f;
     public Text timepassedtext;
 
