@@ -63,7 +63,9 @@ public class Datapersistencemanager : MonoBehaviour
         foreach (Interfacedatapersistence interfacedatapersistence in datapersistentobjects)
         {
             interfacedatapersistence.loaddata(gameData);
-        }  
+        }
+
+        Debug.Log("Loaded most Time alive= "+ gameData.mosttimealive);
 
     }
 
@@ -74,6 +76,10 @@ public class Datapersistencemanager : MonoBehaviour
         {
             interfacedatapersistence.savedata(ref gameData);
         }
+
+        Debug.Log("Saved most Time alive= " + gameData.mosttimealive);
+
+
     }
 
     private List<Interfacedatapersistence> Findalldatapersistentobjects()
