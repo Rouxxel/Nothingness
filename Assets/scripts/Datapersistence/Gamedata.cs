@@ -1,4 +1,3 @@
-using UnityEngine;
 
 [System.Serializable]
 public class GameData 
@@ -10,7 +9,9 @@ public class GameData
     //Default value in this constructor
     public GameData()
     {
+        //Value that is intended to be saved
         this.mosttimealive = 0;
+
     }
 
 }
