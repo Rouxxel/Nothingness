@@ -4,6 +4,13 @@ using System.Collections.Generic;
 
 public class Datapersistencemanager : MonoBehaviour
 {
+    [Header("File storage configuration")]
+    [SerializeField] private string filename;
+    [SerializeField] private bool userecrypt;
+
+    //Filedatahandler variable
+    FileDataHandler dataHandler;
+
     //Variable from the Game data variables
     private GameData gameData;
 
@@ -32,6 +39,7 @@ public class Datapersistencemanager : MonoBehaviour
 
     private void Start()
     {
+        this.dataHandler = new FileDataHandler(Application.persistentDataPath, filename, userecrypt);
         this.datapersistentobjects = Findalldatapersistentobjects();
         loadgame();
     }
@@ -52,6 +60,9 @@ public class Datapersistencemanager : MonoBehaviour
 
     public void loadgame()
     {
+        //Load any saved data usign FileDataHandler
+        this.gameData = dataHandler.loaddata();
+
         //Load any saved data, if not initialize new game
         if (this.gameData == null)
         {
@@ -65,8 +76,6 @@ public class Datapersistencemanager : MonoBehaviour
             interfacedatapersistence.loaddata(gameData);
         }
 
-        Debug.Log("Loaded most Time alive= "+ gameData.mosttimealive);
-
     }
 
     public void savegame()
@@ -77,7 +86,8 @@ public class Datapersistencemanager : MonoBehaviour
             interfacedatapersistence.savedata(ref gameData);
         }
 
-        Debug.Log("Saved most Time alive= " + gameData.mosttimealive);
+        //Save current data using the FileDataHandler
+        dataHandler.savedata(gameData);
 
 
     }
