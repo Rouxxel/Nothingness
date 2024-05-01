@@ -8,16 +8,18 @@ public class Datapersistencemanager : MonoBehaviour
     [SerializeField] private string filename;
     [SerializeField] private bool userecrypt;
 
-    //Filedatahandler variable
-    FileDataHandler dataHandler;
+    //Get instance publicly but to modify it would need to be privately only in this class
+    public static Datapersistencemanager instance { get; private set; }
+    //Create a list 
+    private List<Interfacedatapersistence> datapersistentobjects;
 
     //Variable from the Game data variables
     private GameData gameData;
 
-    //Create a list 
-    private List<Interfacedatapersistence> datapersistentobjects;
+    //Filedatahandler variable
+    FileDataHandler dataHandler;
 
-    public static Datapersistencemanager instance { get; private set; }
+
 
     // <Variables and references>
     /// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

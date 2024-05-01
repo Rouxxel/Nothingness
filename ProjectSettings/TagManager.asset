@@ -17,6 +17,7 @@ TagManager:
   - comet
   - cometspawner
   - enemyship2
+  - datapersistentmanager
   layers:
   - Default
   - TransparentFX

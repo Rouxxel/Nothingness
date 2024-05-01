@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class obstaclespawner : MonoBehaviour
+public class obstaclespawner : MonoBehaviour, Interfacedatapersistence
 {
     //Reference to game object to spawn
     public GameObject obstacles;
@@ -109,10 +109,25 @@ public class obstaclespawner : MonoBehaviour
         
     }
 
-    //Decrease spawnrate perioducally
+    //Decrease spawnrate periodically
     void decreasespawnrate (float reduceamount)
     {
         spawnrate1=spawnrate1-reduceamount; 
     }
 
+    // <Functions>
+    /// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // <Interface functions>
+    
+    //Load game data
+    public void loaddata(GameData data)
+    {
+        this.spawnrate1 = data.obstaclespawnrate;
+    }
+
+    //Save game data
+    public void savedata(ref GameData data)
+    {
+        data.obstaclespawnrate = this.spawnrate1;
+    }
 }

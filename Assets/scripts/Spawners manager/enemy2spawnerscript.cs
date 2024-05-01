@@ -1,7 +1,6 @@
-using System.Net;
 using UnityEngine;
 
-public class enemy2spawnerscript : MonoBehaviour
+public class enemy2spawnerscript : MonoBehaviour,Interfacedatapersistence
 {
     //Reference and management values
     public GameObject enemy2ship;
@@ -97,6 +96,22 @@ public class enemy2spawnerscript : MonoBehaviour
     void reducespawnrate(float decreasevalue)
     {
         spawnrate1 = spawnrate1 - decreasevalue;
+    }
+
+    // <Functions>
+    /// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // <Interface functions>
+
+    //Load game data
+    public void loaddata(GameData data)
+    {
+        this.spawnrate1 = data.enemy2spawnrate;
+    }
+
+    //Update game data to save it
+    public void savedata(ref GameData data)
+    {
+        data.enemy2spawnrate = this.spawnrate1;
     }
 
 }
