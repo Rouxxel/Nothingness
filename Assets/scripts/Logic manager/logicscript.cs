@@ -215,7 +215,7 @@ public class logicscript : MonoBehaviour, Interfacedatapersistence
     //Load game data
     public void loaddata(GameData data)
     {
-        this.timepassed=data.mosttimealive;
+        this.timepassed = data.mosttimealive;
     }
 
     //Update game data to save it
@@ -223,5 +223,6 @@ public class logicscript : MonoBehaviour, Interfacedatapersistence
     {
         data.mosttimealive = this.timepassed;
     }
+
 
 }
