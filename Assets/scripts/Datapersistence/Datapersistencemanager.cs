@@ -36,13 +36,24 @@ public class Datapersistencemanager : MonoBehaviour
 
     // <Get the instance publicly>
     /// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // <Load game on start, save game on close>
+    // <Load game on start, get the list of all persistent objects and save game on close>
 
     private void Start()
     {
         this.dataHandler = new FileDataHandler(Application.persistentDataPath, filename, userecrypt);
         this.datapersistentobjects = Findalldatapersistentobjects();
         loadgame();
+    }
+
+    private List<Interfacedatapersistence> Findalldatapersistentobjects()
+    {
+        //Find all objects that implement the Interfacoe through System Linq (They must extend from Monobehavior)
+        IEnumerable<Interfacedatapersistence> datapersistentobjects = FindObjectsOfType<MonoBehaviour>().
+            OfType<Interfacedatapersistence>();
+
+        //Initialize the list
+        return new List<Interfacedatapersistence>(datapersistentobjects);
+
     }
 
     void OnApplicationQuit()
@@ -91,17 +102,6 @@ public class Datapersistencemanager : MonoBehaviour
         dataHandler.savedata(gameData);
 
 
-    }
-
-    private List<Interfacedatapersistence> Findalldatapersistentobjects()
-    {
-        //Find all objects that implement the Interfacoe through System Linq (They must extend from Monobehavior)
-        IEnumerable<Interfacedatapersistence> datapersistentobjects = FindObjectsOfType<MonoBehaviour>().
-            OfType<Interfacedatapersistence>();
-
-        //Initialize the list
-        return new List<Interfacedatapersistence>(datapersistentobjects);
-         
     }
 
 }
