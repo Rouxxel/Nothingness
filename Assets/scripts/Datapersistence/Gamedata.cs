@@ -7,6 +7,8 @@ public class GameData
     // <Variables and references>
     /// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //Default value in this constructor
+
+    //Constructor
     public GameData()
     {
         //Value that is intended to be saved
