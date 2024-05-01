@@ -17,19 +17,20 @@ public class Datapersistencemanager : MonoBehaviour
     //Create a list 
     private List<Interfacedatapersistence> datapersistentobjects;
 
+    public static Datapersistencemanager instance { get; private set; }
+
     // <Variables and references>
     /// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // <Get the instance publicly>
-    public static Datapersistencemanager Instance { get; private set; }
 
     //Check if there is more than 1 data persistence manager
     private void Awake()
     {
-        if (Instance != null)
+        if (instance != null)
         {
             Debug.LogError("Found more than 1 data persistence Manager in scene");
         }
-        Instance = this;
+        instance = this;
     }
 
 
