@@ -13,11 +13,11 @@ public class Datapersistencemanager : MonoBehaviour
     //Create a list 
     private List<Interfacedatapersistence> datapersistentobjects;
 
-    //Variable from the Game data variables
+    //Variable from the Game data to keep track of the current data
     private GameData gameData;
 
     //Filedatahandler variable
-    FileDataHandler dataHandler;
+    private FileDataHandler dataHandler;
 
 
 
