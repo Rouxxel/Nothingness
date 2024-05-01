@@ -38,13 +38,15 @@ public class Datapersistencemanager : MonoBehaviour
     /// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // <Load game on start, get the list of all persistent objects and save game on close>
 
+    //On start, initialize data handler, list of objects that implement interface and load saved data
     private void Start()
     {
         this.dataHandler = new FileDataHandler(Application.persistentDataPath, filename, userecrypt);
         this.datapersistentobjects = Findalldatapersistentobjects();
-        loadgame();
+        loadgame(); //Can be used in buttons
     }
 
+    //Method to find all objects in the scene that implement the interface
     private List<Interfacedatapersistence> Findalldatapersistentobjects()
     {
         //Find all objects that implement the Interfacoe through System Linq (They must extend from Monobehavior)
@@ -56,26 +58,29 @@ public class Datapersistencemanager : MonoBehaviour
 
     }
 
-    void OnApplicationQuit()
+    //Method to save data once app is exited
+    private void OnApplicationQuit()
     {
-        savegame();
+        savegame(); //Can be used in buttons 
     }
 
     // <Load game on start, save game on close>
     /// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // <Public methods>
 
+    //Create new game data
     public void newgame()
     {
         this.gameData=new GameData();
     }
 
+    //Load existing game data and if non-existent, use newgame() method
     public void loadgame()
     {
-        //Load any saved data usign FileDataHandler
-        this.gameData = dataHandler.loaddata();
+        //Load any saved data using FileDataHandler
+        this.gameData = dataHandler.loaddata(); //in case data handler does exist then gameData=null
 
-        //Load any saved data, if not initialize new game
+        //If not initialized new game
         if (this.gameData == null)
         {
             Debug.Log("No saved data found. Initialize to default values");
@@ -90,9 +95,10 @@ public class Datapersistencemanager : MonoBehaviour
 
     }
 
+    //Save current game data
     public void savegame()
     {
-        //Pass data to other scripts so they can update it and save data using data handler
+        //Extract data to other scripts so they can update it and save data using data handler
         foreach (Interfacedatapersistence interfacedatapersistence in datapersistentobjects)
         {
             interfacedatapersistence.savedata(ref gameData);
