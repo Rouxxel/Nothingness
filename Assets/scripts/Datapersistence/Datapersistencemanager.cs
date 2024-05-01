@@ -4,9 +4,6 @@ using System.Collections.Generic;
 
 public class Datapersistencemanager : MonoBehaviour
 {
-    [Header("File storage configuration")]
-    [SerializeField] private string filename;
-    [SerializeField] private bool userecrypt;
 
     //Get instance publicly but to modify it would need to be privately only in this class
     public static Datapersistencemanager instance { get; private set; }
@@ -16,10 +13,11 @@ public class Datapersistencemanager : MonoBehaviour
     //Variable from the Game data to keep track of the current data
     private GameData gameData;
 
+    [Header("File storage configuration")]
+    [SerializeField] private string filename;
+    [SerializeField] private bool userecrypt;
     //Filedatahandler variable
     private FileDataHandler dataHandler;
-
-
 
     // <Variables and references>
     /// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
