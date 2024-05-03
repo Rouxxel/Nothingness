@@ -9,7 +9,7 @@ public class FileDataHandler
     private string datadirectorypath = "";
 
     //Initialize file name
-    private string datacirectoryname = "";
+    private string datadirectoryname = "";
 
     //Variables for encryption
     private bool userecrypt=false;
@@ -20,10 +20,10 @@ public class FileDataHandler
     // <Constructor>
 
     //Constructor for the 3 private variables
-    public FileDataHandler(string datadirectorypath, string datacirectoryname, bool userecrypt)
+    public FileDataHandler(string directorypath, string directoryname, bool userecrypt)
     {
-        this.datadirectorypath = datadirectorypath;
-        this.datacirectoryname = datacirectoryname;
+        this.datadirectorypath = directorypath;
+        this.datadirectoryname = directoryname;
         this.userecrypt = userecrypt;
     }
 
@@ -33,7 +33,7 @@ public class FileDataHandler
 
     public void savedata(GameData gameData)
     {
-        string fullpath= Path.Combine(datadirectorypath,datacirectoryname);
+        string fullpath= Path.Combine(datadirectorypath, datadirectoryname);
         
         try
         {
@@ -66,7 +66,7 @@ public class FileDataHandler
 
     public GameData loaddata()
     {
-        string fullpath = Path.Combine(datadirectorypath, datacirectoryname);
+        string fullpath = Path.Combine(datadirectorypath, datadirectoryname);
         GameData loadeddata=null;
         
         if (File.Exists(fullpath))
@@ -74,23 +74,23 @@ public class FileDataHandler
             try
             {
                 //Load serialized data from file
-                string datatolad = "";
+                string datatoload = "";
                 using (FileStream stream =new FileStream(fullpath, FileMode.Open))
                 {
                     using (StreamReader reader = new StreamReader(stream))
                     {
-                        datatolad = reader.ReadToEnd();
+                        datatoload = reader.ReadToEnd();
                     } 
                 }
 
                 //Decrypt data before loading
                 if (userecrypt)
                 {
-                    datatolad = encryptdecryptdatafile(datatolad);
+                    datatoload = encryptdecryptdatafile(datatoload);
                 }
 
                 //Deserialize data from Json to Csharp once read
-                loadeddata = JsonUtility.FromJson<GameData>(datatolad);
+                loadeddata = JsonUtility.FromJson<GameData>(datatoload);
 
 
             }
